@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ficha-personagem</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <form id="form" autocomplete="on" novalidate>
+        
+        <div id="corpo">
+            <div id="top">
+                <div id="top1">
+                    <input class="info" name="info1" type="text" id="classe">
+                    <input class="info" name="info2" type="text">
+                    <input class="info" name="info3" type="text">
+                </div>
+                <div id="top2">
+                    <input class="info" name="info4" type="text" id="raca">
+                    <input class="info" name="info5" type="text">
+                </div>
+            </div>
+            <div id="bonus">
+                <input class="bonus" name="bonus1" type="text">
+                <input class="bonus" name="bonus2" type="text">
+            </div>
+            <div id="mid">
+                <div id="atributos">
+                    <div id="atributos1">
+                        <input class="group" name="atributo1" type="text">
+                        <input id="broke1" name="broke1-1" type="text">
+                        <input class="group" name="atributo2" type="text">
+                        <input id="broke2" name="broke2-1" type="text">
+                        <input class="group" name="atributo3" type="text">
+                        <input name="atributo4" type="text">
+                    </div>
+                    <div id="atributos2">
+                        <input class="group" name="atributo5" type="text">
+                        <input id="broke1" name="broke1-2" type="text">
+                        <input class="group" name="atributo6" type="text">
+                        <input id="broke2" name="broke2-2" type="text">
+                        <input class="group" name="atributo7" type="text">
+                        <input name="atributo8" type="text">
+                    </div>
+                </div>
+                
+                <div id="side">
+                    <div id="checkbox1">
+                        <input type="checkbox" name="checkbox1-1">
+                        <input type="checkbox" name="checkbox1-2">
+                        <input type="checkbox" name="checkbox1-3">
+                    </div>
+                    <div id="checkbox2">
+                        <input type="checkbox" name="checkbox2-1">
+                        <input type="checkbox" name="checkbox2-2">
+                        <input type="checkbox" name="checkbox2-3">
+                    </div>
+                    <div id="vida">
+                        <input name="vida" type="text">
+                        <input id="vida-maxima" name="vida-maxima" type="text">
+                        <input name="vida-atual" type="text">
+                    </div>
+                </div>
+            </div>
+            <div id="bottom1">
+                <button type="button" id="menu"></button>
+                <input name="bottom1-input" type="text">
+            </div>
+            <div id="bottom2">
+                <input name="bottom2-input1" type="text">
+                <input name="bottom2-input2" type="text">
+            </div>
+        </div>
+        <button type="button" id="salvar-btn">Salvar</button>
+        <button type="button" id="carregar-btn">Carregar</button>
+    </form>
+
+    <script>
+        // Função para salvar os valores do formulário no localStorage
+        function salvarFormulario() {
+            var formulario = document.getElementById("form");
+            var dados = {};
+
+            // Itera sobre todos os elementos do formulário e armazena seus valores
+            for (var i = 0; i < formulario.elements.length; i++) {
+                var elemento = formulario.elements[i];
+                if (elemento.name) {
+                    dados[elemento.name] = elemento.value;
+                }
+            }
+
+            localStorage.setItem("formularioPersonagem", JSON.stringify(dados));
+        }
+
+        // Função para carregar os valores do formulário do localStorage
+        function carregarFormulario() {
+            var dadosSalvos = localStorage.getItem("formularioPersonagem");
+            if (dadosSalvos) {
+                var dados = JSON.parse(dadosSalvos);
+                var formulario = document.getElementById("form");
+
+                // Itera sobre todos os elementos do formulário e define seus valores
+                for (var i = 0; i < formulario.elements.length; i++) {
+                    var elemento = formulario.elements[i];
+                    if (elemento.name && dados[elemento.name] !== undefined) {
+                        elemento.value = dados[elemento.name];
+                    }
+                }
+            }
+        }
+
+        // Adiciona eventos aos botões
+        document.getElementById("salvar-btn").addEventListener("click", salvarFormulario);
+        document.getElementById("carregar-btn").addEventListener("click", carregarFormulario);
+
+        // Carrega os valores salvos ao carregar a página
+        window.onload = carregarFormulario;
+    </script>
+</body>
+</html>

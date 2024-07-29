@@ -1,0 +1,41 @@
+*{
+    margin: 0px;
+}
+body,html{
+    overflow:auto;
+}
+#corpo{
+    position: absolute;
+    background-image: url(1.png);
+    background-repeat: no-repeat;
+    height: 896px;
+    width: 414;
+
+}
+#informações{
+    position: absolute;
+    background-image: url(2.png);
+    width: 414px;
+    height: 2600px;
+
+}
+#botão-magias{
+    position: absolute;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+}
+
+#magias{
+    position: absolute;
+    background-image: url(3.png);
+    width: 414px;
+    height: 896px;
+
+}
+#botão-informações{
+    position: absolute;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+}
