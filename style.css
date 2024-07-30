@@ -12,15 +12,6 @@ body{
 #raça{
     text-align: left;
 }
-button{
-    position: relative;
-    width: 185px;
-    height: 40px;
-    margin-right: 145px;
-    left: 12px;
-    top: 25px;
-    background-color: transparent;
-}
 #corpo{
     background-image: url(1.png);
     background-repeat: no-repeat;
@@ -29,14 +20,14 @@ button{
 }
 input{
     width: 40px;
-    background-color: transparent;
+    background-color: transparent ;
     text-align: center;
     color: #cfb083;
     font-size: 15px;
 }
 
 #hover{
-    background-image: url(magem2.jpeg);
+    background-image: url(2.jpeg);
     background-repeat: no-repeat;
     height: 896;
     width: 414;
@@ -93,7 +84,7 @@ input{
 #atributos1 input{
     position: relative;
     left: 25px;
-    top: 40px;
+    top: 38px;
 }
 #atributos2{
     display: flex;
@@ -103,25 +94,28 @@ input{
 #atributos2 input{
     position: relative;
     left: 25px;
-    top: 40px;
+    top: 38px;
 }
 #atributos1 #broke1{
     margin-bottom: 80px;
 }
 #atributos1 #broke2{
-    margin-bottom: 80px;
+    margin-bottom: 75px;
 }
 #atributos1 .group{
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 #atributos2 #broke1{
     margin-bottom: 80px;
 }
 #atributos2 #broke2{
-    margin-bottom: 80px;
+    margin-bottom: 75px;
 }
 #atributos2 .group{
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+}
+#atributos .atributo{
+    height: 25px;
 }
 #side{
     display: flex;
@@ -169,35 +163,35 @@ input{
 }
 #bottom1{
     position: relative;
-    height: 100px;
+    height: 75px;
     width: 414px;
 }
-#bottom1 input{
-    position: relative;
-    top: 70px;
-}
+
 #bottom2{
+    flex-direction: row;
     height: 100px;
     width: 414px;
 }
 #bottom2 input{
     position: relative;
-    top: 15px;
-    left: 135px;
-    margin-right: 150px;
+    width: 40px;
+    height: 20px;
+    top: 11px;
+    left: 132px;
+    margin-right: 156px;
+    margin-bottom: 48px;
 }
-#nav-bar {
+button{
     position: absolute;
-    width: 414px;
-    height: 896px;
-    background-image: url(imagem2.png);
-    display: none;
-    z-index: 1000;
-}
-#menu-hover {
-    background: #007bff00;
-    border: none;
-    border-radius: 5px;
+    width: 180px;
+    height: 40px;
+    top: 11px;
     cursor: pointer;
-    z-index: 1100;
+    background-color: transparent;
+}
+#menu2{
+    left: 220px;
+}
+#menu{
+    left: 12px;
 }
