@@ -8,58 +8,57 @@
 </head>
 <body>
     <form id="form" autocomplete="on" novalidate>
-        
         <div id="corpo">
             <div id="top">
                 <div id="top1">
-                    <input class="info" name="info1" type="text" id="classe">
-                    <input class="info" name="info2" type="text">
-                    <input class="info" name="info3" type="text">
+                    <input class="info" name="classe" type="text" id="classe">
+                    <input class="info" name="info2" type="text" id="info2">
+                    <input class="info" name="info3" type="text" id="info3">
                 </div>
                 <div id="top2">
-                    <input class="info" name="info4" type="text" id="raca">
-                    <input class="info" name="info5" type="text">
+                    <input class="info" name="raca" type="text" id="raca">
+                    <input class="info" name="info5" type="text" id="info5">
                 </div>
             </div>
             <div id="bonus">
-                <input class="bonus" name="bonus1" type="text">
-                <input class="bonus" name="bonus2" type="text">
+                <input class="bonus" name="bonus1" type="text" id="bonus1">
+                <input class="bonus" name="bonus2" type="text" id="bonus2">
             </div>
             <div id="mid">
                 <div id="atributos">
                     <div id="atributos1">
-                        <input class="group" name="atributo1" type="text">
-                        <input class="atributo" id="broke1" name="broke1-1" type="text">
-                        <input class="group" name="atributo2" type="text">
-                        <input class="atributo" id="broke2" name="broke2-1" type="text">
-                        <input class="group" name="atributo3" type="text">
-                        <input class="atributo" name="atributo4" type="text">
+                        <input class="group" name="atributo1" type="text" id="atributo1">
+                        <input class="atributo" id="broke1-1" name="broke1-1" type="text">
+                        <input class="group" name="atributo2" type="text" id="atributo2">
+                        <input class="atributo" id="broke2-1" name="broke2-1" type="text">
+                        <input class="group" name="atributo3" type="text" id="atributo3">
+                        <input class="atributo" name="atributo4" type="text" id="atributo4">
                     </div>
                     <div id="atributos2">
-                        <input class="group" name="atributo5" type="text">
-                        <input class="atributo" id="broke1" name="broke1-2" type="text">
-                        <input class="group" name="atributo6" type="text">
-                        <input class="atributo" id="broke2" name="broke2-2" type="text">
-                        <input class="group" name="atributo7" type="text">
-                        <input class="atributo" name="atributo8" type="text">
+                        <input class="group" name="atributo5" type="text" id="atributo5">
+                        <input class="atributo" id="broke1-2" name="broke1-2" type="text">
+                        <input class="group" name="atributo6" type="text" id="atributo6">
+                        <input class="atributo" id="broke2-2" name="broke2-2" type="text">
+                        <input class="group" name="atributo7" type="text" id="atributo7">
+                        <input class="atributo" name="atributo8" type="text" id="atributo8">
                     </div>
                 </div>
                 
                 <div id="side">
                     <div id="checkbox1">
-                        <input type="checkbox" name="checkbox1-1">
-                        <input type="checkbox" name="checkbox1-2">
-                        <input type="checkbox" name="checkbox1-3">
+                        <input type="checkbox" name="checkbox1-1" id="checkbox1-1">
+                        <input type="checkbox" name="checkbox1-2" id="checkbox1-2">
+                        <input type="checkbox" name="checkbox1-3" id="checkbox1-3">
                     </div>
                     <div id="checkbox2">
-                        <input type="checkbox" name="checkbox2-1">
-                        <input type="checkbox" name="checkbox2-2">
-                        <input type="checkbox" name="checkbox2-3">
+                        <input type="checkbox" name="checkbox2-1" id="checkbox2-1">
+                        <input type="checkbox" name="checkbox2-2" id="checkbox2-2">
+                        <input type="checkbox" name="checkbox2-3" id="checkbox2-3">
                     </div>
                     <div id="vida">
-                        <input name="vida" type="text">
-                        <input id="vida-maxima" name="vida-maxima" type="text">
-                        <input name="vida-atual" type="text">
+                        <input name="vida" type="text" id="vida">
+                        <input id="vida-maxima" name="vida-maxima" type="text" id="vida-maxima">
+                        <input name="vida-atual" type="text" id="vida-atual">
                     </div>
                 </div>
             </div>
@@ -68,54 +67,35 @@
                 <button type="button" id="menu2" onclick="location.href='magias.html'"></button>
             </div>
             <div id="bottom2">
-                <input name="bottom1-input" type="text">
-                <input name="bottom2-input1" type="text">
-                <input name="bottom2-input2" type="text">
+                <input name="bottom1-input" type="text" id="bottom1-input">
+                <input name="bottom2-input1" type="text" id="bottom2-input1">
+                <input name="bottom2-input2" type="text" id="bottom2-input2">
             </div>
         </div>
-
     </form>
 
     <script>
-        // Função para salvar os valores do formulário no localStorage
-        function salvarFormulario() {
+        // Função para enviar dados do formulário via AJAX
+        function salvarFormularioAutomaticamente() {
             var formulario = document.getElementById("form");
-            var dados = {};
+            var dados = new FormData(formulario);
 
-            // Itera sobre todos os elementos do formulário e armazena seus valores
-            for (var i = 0; i < formulario.elements.length; i++) {
-                var elemento = formulario.elements[i];
-                if (elemento.name) {
-                    dados[elemento.name] = elemento.value;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "process_form.php", true);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    console.log("Dados salvos com sucesso.");
+                } else {
+                    console.error("Erro ao salvar os dados.");
                 }
-            }
-
-            localStorage.setItem("formularioPersonagem", JSON.stringify(dados));
+            };
+            xhr.send(dados);
         }
 
-        // Função para carregar os valores do formulário do localStorage
-        function carregarFormulario() {
-            var dadosSalvos = localStorage.getItem("formularioPersonagem");
-            if (dadosSalvos) {
-                var dados = JSON.parse(dadosSalvos);
-                var formulario = document.getElementById("form");
-
-                // Itera sobre todos os elementos do formulário e define seus valores
-                for (var i = 0; i < formulario.elements.length; i++) {
-                    var elemento = formulario.elements[i];
-                    if (elemento.name && dados[elemento.name] !== undefined) {
-                        elemento.value = dados[elemento.name];
-                    }
-                }
-            }
-        }
-
-        // Adiciona eventos aos botões
-        document.getElementById("salvar-btn").addEventListener("click", salvarFormulario);
-        document.getElementById("carregar-btn").addEventListener("click", carregarFormulario);
-
-        // Carrega os valores salvos ao carregar a página
-        window.onload = carregarFormulario;
+        // Adiciona evento de mudança em todos os campos do formulário
+        document.querySelectorAll("#form input").forEach(function(input) {
+            input.addEventListener("change", salvarFormularioAutomaticamente);
+        });
     </script>
 </body>
 </html>
