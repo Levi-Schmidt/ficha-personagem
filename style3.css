@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+}
+body{
+    width: 414px;
+    height: 1800px;
+    background-image: url(3.png);
+    background-repeat: no-repeat;
+}
+div{
+    display: flex;
+    flex-direction: column;
+}
+textarea{
+    position: relative;
+    left: 24px;
+    top: 70px;
+    width: 360px;
+    background-color: transparent;
+    border-color: transparent;
+    color: #cfb083;
+    font-size: 20px;
+}
+.info{
+    height: 100px;
+    margin-bottom: 35px;
+}
+.broke{
+    height: 100px;
+    margin-bottom: 118px;
+}
+#inventario{
+    height: 525px;
+}
+button{
+    position: absolute;
+    left: 22px;
+    width: 180px;
+    height: 40px;
+    top: 640PX;
+    cursor: pointer;
+    background-color: transparent;
+    border-color: transparent;
+}
+#float{
+    left: 212px;
+}
+#row{
+    display: flex;
+    flex-direction: row;
+}
